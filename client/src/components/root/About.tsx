@@ -1,0 +1,126 @@
+import { Phone } from "lucide-react";
+import { motion } from "motion/react";
+import StarDivider from "../widgets/StarDivider";
+import about_banner_1 from "../../assets/images/about-banner-1.webp";
+import about_banner_2 from "../../assets/images/about-banner-2.webp";
+import about_badge from "../../assets/images/about-badge.png";
+import about_badge_bg from "../../assets/images/about-badge-bg.png";
+import { useNavigate } from "react-router-dom";
+
+const About = () => {
+	const navigate = useNavigate();
+
+	const containerVariants = {
+		initial: { opacity: 0 },
+		animate: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.2, // delay between children
+			},
+		},
+	};
+
+	const childVariants = {
+		initial: { opacity: 0, y: 30 },
+		animate: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+	};
+
+	const galleryVariants = {
+		initial: {
+			opacity: 0,
+			x: 50,
+		},
+		animate: {
+			opacity: 1,
+			x: 0,
+			transition: { duration: 0.8 },
+		},
+	};
+
+	return (
+		<section className="w-full bg-section-background flex justify-center items-center relative overflow-hidden">
+			<div className="container w-full flex max-md:flex-col justify-center items-center text-center gap-12 mx-14 my-8 md:my-20">
+				<motion.div
+					variants={containerVariants}
+					initial="initial"
+					whileInView="animate"
+					viewport={{
+						once: true,
+						amount: 0.3,
+					}}
+					className="w-[320px] md:w-[625px] flex flex-col justify-center items-center gap-2 md:gap-4"
+				>
+					<motion.div
+						className="flex flex-col justify-center items-center md:gap-2"
+						variants={childVariants}
+					>
+						<p className="subtitle">Our Story</p>
+						<StarDivider />
+					</motion.div>
+					<motion.h2 variants={childVariants} className="heading-2">
+						Every Flavor Tells a Story
+					</motion.h2>
+					<motion.p variants={childVariants} className="text">
+						Our journey began with a love for real food and real connections.
+						Today, we bring that same love to your table—fresh, flavorful, and
+						always on time.
+					</motion.p>
+
+					<motion.a
+						variants={childVariants}
+						href="tel:+1 123 456 7890"
+						className="text-sm md:text-lg font-semibold flex justify-center items-center gap-2 transition-colors duration-300 hover:text-secondary-foreground"
+					>
+						<Phone />
+						+1 123 456 7890
+					</motion.a>
+					<motion.div
+						variants={childVariants}
+						onClick={() => navigate("/about")}
+						className="btn-secondary"
+					>
+						<span>Read More</span>
+					</motion.div>
+				</motion.div>
+
+				<motion.div
+					variants={galleryVariants}
+					initial="initial"
+					whileInView="animate"
+					viewport={{
+						once: true,
+						amount: 0.3,
+					}}
+					className="relative"
+				>
+					<div className="gallery">
+						<img
+							src={about_banner_1}
+							className="rounded-2xl object-cover"
+							alt="About"
+						/>
+						<img
+							src={about_banner_2}
+							className="rounded-2xl object-cover"
+							alt="About"
+						/>
+					</div>
+
+					<img
+						src={about_badge}
+						className="absolute -top-10 -right-5 w-24 md:w-28"
+						alt="badge"
+					/>
+					<img
+						src={about_badge_bg}
+						className="absolute -top-10 -right-5 w-24 md:w-28 animate-spin"
+						style={{ animationDuration: "7s" }}
+						alt="badge-bg"
+					/>
+				</motion.div>
+			</div>
+		</section>
+	);
+};
+
+export default About;
