@@ -1,7 +1,7 @@
 services:
   # Frontend Static Site
   - type: static
-    name: crusto-frontend
+    name: crusto
     runtime: node
     env: node
     buildCommand: npm run build:client
