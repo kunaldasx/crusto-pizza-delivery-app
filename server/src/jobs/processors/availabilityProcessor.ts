@@ -4,6 +4,8 @@ import {
 	cachePizzaAvailability,
 	checkPizzaAvailability,
 } from "../../utils/availabilityUtils.js";
+import Ingredient from "../../models/ingredient.model.js";
+import { sendStockAlertEmail } from "../../nodemailer/emails.js";
 
 const availabilityProcessor = async (job: Job) => {
 	const { ingredientId } = job.data;
@@ -38,6 +40,17 @@ const availabilityProcessor = async (job: Job) => {
 					error
 				);
 			}
+		}
+
+		// Ingredient has low/zero stock [notify the admin]
+		const ingredient = await Ingredient.findById(ingredientId).lean();
+
+		if (ingredient && ingredient?.stock < 20) {
+			await sendStockAlertEmail(
+				ingredient.name,
+				ingredient.stock,
+				pizzas.length
+			);
 		}
 	} catch (error) {
 		console.error(
