@@ -9,7 +9,6 @@
 <h4 align="center">A pizza delivery platform that lets you create custom pizzas.</h4>
 
 <p align="center">
-
   <a href="">
       <img src="https://img.shields.io/badge/MERN-Stack-brightgreen?logo=react">
   </a>
@@ -136,3 +135,5 @@ Apache 2.0
 > [amitmerchant.com]() &nbsp;&middot;&nbsp;
 > GitHub [@](https://github.com/amitmerchant1990) &nbsp;&middot;&nbsp;
 > Twitter [@amit_merchant](https://twitter.com/amit_merchant)
+
+<!-- MERN stack with user/admin authentication; Custom pizza builder - bases, sauces, cheese, veggies, extras; Razorpay payment integration (test mode); Admin inventory management system; Auto stock updates after orders; Email alerts for low stock threshold; Order tracking - status updates (received → kitchen → delivery); Real-time updates in user dashboard; Redis caching for prices and stock; Background workers with BullMQ -->
