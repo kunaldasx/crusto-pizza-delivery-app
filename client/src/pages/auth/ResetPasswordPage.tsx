@@ -58,10 +58,12 @@ const ResetPasswordPage = () => {
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5 }}
-			className="max-w-md w-full bg-gray-800/50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden"
+			className="max-w-md w-full bg-gray-800/50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden my-12"
 		>
 			<div className="p-8">
-				<h2 className="heading-2 text-center pt-4 pb-7">Reset Password</h2>
+				<h2 className="heading-2 text-center pt-4 pb-7">
+					Reset Password
+				</h2>
 
 				<Form {...form}>
 					<form
@@ -108,7 +110,9 @@ const ResetPasswordPage = () => {
 							)}
 						/>
 
-						<PasswordStrengthMeter password={form.watch("password")} />
+						<PasswordStrengthMeter
+							password={form.watch("password")}
+						/>
 
 						<motion.button
 							whileHover={{ scale: 1.02 }}

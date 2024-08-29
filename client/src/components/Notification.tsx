@@ -1,8 +1,9 @@
 import { useDashboardStore } from "@/store/useDashboardStore";
-import { Bell, Diamond, Package, User } from "lucide-react";
+import { Bell, Diamond, Package, Siren, User } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { formatDistanceToNow } from "date-fns";
+import { ActivityCategory } from "@/types/DashboardState";
 
 const Notification = () => {
 	const analytics = useDashboardStore((state) => state.analytics);
@@ -25,52 +26,102 @@ const Notification = () => {
 							>
 								<div className="flex justify-center items-center gap-4 rounded-lg">
 									<div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-										{activity.type === "signup" ? (
+										{activity.type ===
+										ActivityCategory.Signup ? (
 											<User size={16} />
-										) : (
+										) : activity.type ===
+										  ActivityCategory.Order ? (
 											<Package size={16} />
+										) : (
+											<Siren size={16} />
 										)}
 									</div>
 									<div className="flex-1">
 										<p className="text-xs font-medium tracking-wide">
-											{activity.type === "signup"
-												? `${activity.username} created account`
-												: `${activity.username} placed a new order`}
+											{activity.type ===
+											ActivityCategory.Signup
+												? `${activity.name} created account`
+												: activity.type ===
+												  ActivityCategory.Order
+												? `${activity.name} placed a new order`
+												: `${activity.name} is low on stock`}
 										</p>
 										<p className="text-xs text-muted-foreground">
-											{activity.type === "signup"
+											{activity.type ===
+											ActivityCategory.Signup
 												? "New user registered  "
-												: `Order: ${activity.metadata?.orderId}  `}
+												: activity.type ===
+												  ActivityCategory.Order
+												? `Order: ${activity.metadata?.id}  `
+												: `Ingredient: ${activity.metadata?.id} `}
 
 											<Diamond className="w-2.5 inline" />
 
 											<span className="text-foreground font-medium">
-												{activity.type === "signup"
+												{activity.type ===
+												ActivityCategory.Signup
 													? "  Email verified"
-													: `  ${activity.metadata?.totalItems} item${
-															(activity.metadata?.totalItems ?? 1) > 1
+													: activity.type ===
+													  ActivityCategory.Order
+													? `  ${
+															activity.metadata
+																?.count
+													  } item${
+															(activity.metadata
+																?.count ?? 1) >
+															1
+																? "s"
+																: ""
+													  }`
+													: ` ${
+															activity.metadata
+																?.count
+													  } unit${
+															(activity.metadata
+																?.count ?? 1) >
+															1
 																? "s"
 																: ""
 													  }`}
 											</span>
 										</p>
 										<p className="text-xs text-muted-foreground">
-											{formatDistanceToNow(new Date(activity.timestamp), {
-												addSuffix: true,
-											})}
+											{formatDistanceToNow(
+												new Date(activity.timestamp),
+												{
+													addSuffix: true,
+												}
+											)}
 										</p>
 									</div>
 								</div>
 								<div className="flex flex-col justify-center items-end gap-2">
 									{activity.type === "order" && (
-										<p className="text-sx text-subtitle font-semibold tracking-wide">
-											₹ {activity.metadata?.price.toFixed(2)}
+										<p className="text-sx font-semibold tracking-wide">
+											₹{" "}
+											{(
+												activity.metadata?.price ?? 0
+											).toFixed(2)}
 										</p>
 									)}
 
-									<Badge className="bg-green-500">
-										{activity.type === "signup" ? "Active" : "Pending"}
-									</Badge>
+									<>
+										{activity.type ===
+										ActivityCategory.Signup ? (
+											<Badge className="bg-green-500">
+												Active
+											</Badge>
+										) : activity.type ===
+										  ActivityCategory.Order ? (
+											<Badge className="bg-orange-500">
+												Pending
+											</Badge>
+										) : (
+											<Badge className="bg-red-500">
+												Low Stock
+											</Badge>
+										)}
+									</>
 								</div>
 							</div>
 						))}

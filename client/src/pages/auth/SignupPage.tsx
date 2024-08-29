@@ -57,10 +57,12 @@ const SignupPage = () => {
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5 }}
-			className="max-w-md w-full bg-gray-800/50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden"
+			className="max-w-md w-full bg-gray-800/50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden my-12"
 		>
 			<div className="w-full p-8">
-				<h2 className="heading-2 text-center pt-4 pb-7">Create Account</h2>
+				<h2 className="heading-2 text-center pt-4 pb-7">
+					Create Account
+				</h2>
 
 				<Form {...form}>
 					<form
@@ -75,7 +77,11 @@ const SignupPage = () => {
 								<FormItem>
 									<FormLabel>Username</FormLabel>
 									<FormControl>
-										<Input icon={User} placeholder="Username" {...field} />
+										<Input
+											icon={User}
+											placeholder="Username"
+											{...field}
+										/>
 									</FormControl>
 									<FormMessage />
 								</FormItem>
@@ -142,7 +148,9 @@ const SignupPage = () => {
 							)}
 						/>
 
-						<PasswordStrengthMeter password={form.watch("password")} />
+						<PasswordStrengthMeter
+							password={form.watch("password")}
+						/>
 
 						{/* Submit Button */}
 						<motion.button

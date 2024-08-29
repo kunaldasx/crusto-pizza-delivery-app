@@ -12,7 +12,9 @@ const EmailVerificationPage = () => {
 
 	const verifyEmail = useAuthStore((state) => state.verifyEmail);
 	const intendedRoute = useAuthStore((state) => state.intendedRoute);
-	const clearIntendedRoute = useAuthStore((state) => state.clearIntendedRoute);
+	const clearIntendedRoute = useAuthStore(
+		(state) => state.clearIntendedRoute
+	);
 	const isLoading = useAuthStore((state) => state.isLoading);
 
 	const addActivity = useDashboardStore((state) => state.addActivity);
@@ -40,7 +42,9 @@ const EmailVerificationPage = () => {
 			setCode(newCode);
 
 			// Focus on the last non-empty input or the first empty one
-			const lastFilledIndex = newCode.findLastIndex((digit) => digit !== "");
+			const lastFilledIndex = newCode.findLastIndex(
+				(digit) => digit !== ""
+			);
 			const focusIndex = lastFilledIndex < 5 ? lastFilledIndex + 1 : 5;
 			inputRefs.current[focusIndex]?.focus();
 		} else {
@@ -68,7 +72,7 @@ const EmailVerificationPage = () => {
 			if (response.success) {
 				const activity = {
 					type: ActivityCategory.Signup,
-					username: response.user?.username ?? "",
+					name: response.user?.username ?? "",
 					timestamp: new Date(),
 				};
 				addActivity(activity);
@@ -97,9 +101,11 @@ const EmailVerificationPage = () => {
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5 }}
-			className=" bg-gray-800/50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden p-10"
+			className=" bg-gray-800/50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden p-10 my-12"
 		>
-			<h2 className="heading-2 text-center pt-4 pb-7">Verify Your Email</h2>
+			<h2 className="heading-2 text-center pt-4 pb-7">
+				Verify Your Email
+			</h2>
 			<p className="text-center text-gray-300 mb-6">
 				Enter the 6-digit code sent to your email address.
 			</p>
@@ -119,7 +125,9 @@ const EmailVerificationPage = () => {
 							type="text"
 							maxLength={6}
 							value={digit}
-							onChange={(e) => handleChange(index, e.target.value)}
+							onChange={(e) =>
+								handleChange(index, e.target.value)
+							}
 							onKeyDown={(e) => handleClear(index, e)}
 							className="w-12 h-12 text-center text-2xl font-bold bg-gray-700 text-white border-2 border-gray-600 rounded-xl focus:border-ring focus:outline-none "
 							disabled={isLoading}

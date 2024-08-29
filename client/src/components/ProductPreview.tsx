@@ -18,7 +18,7 @@ import {
 } from "./ui/alert-dialog";
 import { Separator } from "./ui/separator";
 
-interface PizzaPreviewType {
+interface ProductPreviewType {
 	pizza: PizzaType;
 	isMenuProduct?: boolean;
 	handleClosePizza: () => void;
@@ -26,13 +26,13 @@ interface PizzaPreviewType {
 	handleDeletePizza?: (pizzaId: string) => void;
 }
 
-const PizzaPreview = ({
+const ProductPreview = ({
 	pizza,
 	isMenuProduct = false,
 	handleClosePizza,
 	handleEditPizza,
 	handleDeletePizza,
-}: PizzaPreviewType) => {
+}: ProductPreviewType) => {
 	const selectedIngredients = [
 		pizza.base,
 		pizza.sauce,
@@ -65,10 +65,13 @@ const PizzaPreview = ({
 			>
 				<div className="w-full flex max-sm:flex-col justify-center items-start gap-8 py-12 px-6 md:px-12">
 					{/* Image Section */}
-					<div className="max-sm:w-full flex-1 flex flex-col justify-start items-center gap-4">
+					<div className="max-sm:w-full flex-1 flex flex-col justify-start items-start gap-4">
 						<div className="w-full relative rounded-lg border-2">
 							<img
-								src={pizza.images?.[selectedImageIdx] ?? pizza_placeholder}
+								src={
+									pizza.images?.[selectedImageIdx] ??
+									pizza_placeholder
+								}
 								alt="Pizza selected Image"
 								className="w-full h-[300px] lg:h-[400px] rounded-lg object-cover"
 							/>
@@ -79,18 +82,20 @@ const PizzaPreview = ({
 								</Badge>
 							)}
 						</div>
-						<div className="w-full h-[70px] lg:h-[100px] flex justify-start items-center flex-wrap gap-2 md:gap-4">
+						<div className="grid grid-cols-3 gap-2 md:gap-4">
 							{pizza.images &&
 								pizza.images.map((url, index) => (
 									<img
 										key={url}
 										src={url}
 										alt="Pizza images"
-										className={`h-full rounded-lg object-cover ${
+										className={`h-[100px] w-[150px] rounded-lg object-cover ${
 											index === selectedImageIdx &&
 											"ring-2 ring-offset-4 ring-offset-black/60 ring-ring"
 										}`}
-										onClick={() => setSelectedImageIdx(index)}
+										onClick={() =>
+											setSelectedImageIdx(index)
+										}
 									/>
 								))}
 						</div>
@@ -102,22 +107,33 @@ const PizzaPreview = ({
 							{pizza.name}
 						</h2>
 						<p className="text-xl lg:text-2xl text-subtitle tracking-wide font-bold">
-							₹ {isMenuProduct ? pizza.price.toFixed(2) : totalPrice.toFixed(2)}
+							₹{" "}
+							{isMenuProduct
+								? pizza.price.toFixed(2)
+								: totalPrice.toFixed(2)}
 						</p>
 
 						{pizza.description && (
-							<p className=" text-muted-foreground">{pizza.description}</p>
+							<p className=" text-muted-foreground">
+								{pizza.description}
+							</p>
 						)}
 
 						{pizza.category && (
 							<div>
-								<h4 className="text-sm text-text mb-2 ml-0.5">Category</h4>
-								<Badge className="text-sm capitalize">{pizza.category}</Badge>
+								<h4 className="text-sm text-text mb-2 ml-0.5">
+									Category
+								</h4>
+								<Badge className="text-sm capitalize">
+									{pizza.category}
+								</Badge>
 							</div>
 						)}
 
 						<div>
-							<h4 className="text-sm text-text mb-3 ml-0.5">Ingredients</h4>
+							<h4 className="text-sm text-text mb-3 ml-0.5">
+								Ingredients
+							</h4>
 							<div className="w-full flex justify-start items-center gap-2 flex-wrap overflow-hidden">
 								{selectedIngredients.map(
 									(ingredient) =>
@@ -136,7 +152,10 @@ const PizzaPreview = ({
 
 						{!isMenuProduct && (
 							<div>
-								<AddToCartForm setTotalPrice={setTotalPrice} pizza={pizza} />
+								<AddToCartForm
+									setTotalPrice={setTotalPrice}
+									pizza={pizza}
+								/>
 							</div>
 						)}
 
@@ -159,12 +178,14 @@ const PizzaPreview = ({
 									<AlertDialogContent className="bg-popover border-2 py-6 px-8">
 										<AlertDialogHeader>
 											<AlertDialogTitle>
-												Are you absolutely sure, you want to delete🚫 this pizza
-												?
+												Are you absolutely sure, you
+												want to delete🚫 this pizza ?
 											</AlertDialogTitle>
 											<AlertDialogDescription>
-												This action cannot be undone. This will permanently
-												delete your pizza and remove it's data from our servers.
+												This action cannot be undone.
+												This will permanently delete
+												your pizza and remove it's data
+												from our servers.
 											</AlertDialogDescription>
 										</AlertDialogHeader>
 										<AlertDialogFooter>
@@ -173,7 +194,9 @@ const PizzaPreview = ({
 											</AlertDialogCancel>
 											<AlertDialogAction
 												className="bg-destructive text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide border-2 py-3 px-12 rounded-lg transition-colors hover:bg-destructive/60"
-												onClick={() => handleDeletePizza(pizza._id)}
+												onClick={() =>
+													handleDeletePizza(pizza._id)
+												}
 											>
 												Delete
 											</AlertDialogAction>
@@ -196,4 +219,4 @@ const PizzaPreview = ({
 	);
 };
 
-export default PizzaPreview;
+export default ProductPreview;

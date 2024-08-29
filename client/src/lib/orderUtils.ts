@@ -50,10 +50,11 @@ export const getOrderProgress = (status: OrderStatus) => {
 		pending: 20,
 		confirmed: 40,
 		preparing: 60,
+		outForDelivery: 80,
 		delivered: 100,
 		cancelled: 0,
 	};
-	return statusProgress[status?.toLowerCase() as OrderStatus] || 0;
+	return statusProgress[status as OrderStatus] || 0;
 };
 
 // Function to get progress color based on status
@@ -62,8 +63,9 @@ export const getProgressColor = (status: string) => {
 		pending: "bg-yellow-500",
 		confirmed: "bg-blue-500",
 		preparing: "bg-orange-500",
+		outForDelivery: "bg-emerald-500",
 		delivered: "bg-green-500",
 		cancelled: "bg-red-500",
 	};
-	return statusColors[status?.toLowerCase() as OrderStatus] || "bg-gray-500";
+	return statusColors[status as OrderStatus] || "bg-gray-500";
 };

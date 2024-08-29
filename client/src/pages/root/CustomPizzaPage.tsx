@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import CustomPizzaForm from "@/components/forms/CustomPizzaForm";
 import { Loader, X } from "lucide-react";
 import { PizzaType } from "@/types/PizzaState";
-import PizzaPreview from "@/components/PizzaPreview";
+import ProductPreview from "@/components/ProductPreview";
 import { useAuthStore } from "@/store/useAuthStore";
 import { toast } from "sonner";
 import { useSearchParams } from "react-router-dom";
@@ -146,7 +146,7 @@ const CustomPizzaPage = () => {
 			{/* Pizza Details Popover */}
 			<AnimatePresence>
 				{viewingPizza && (
-					<PizzaPreview
+					<ProductPreview
 						pizza={viewingPizza}
 						handleClosePizza={handleClosePizza}
 						handleEditPizza={handleEditPizza}
