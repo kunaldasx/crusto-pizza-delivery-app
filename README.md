@@ -33,7 +33,7 @@
 
 ![preview](client/src/assets/images/crusto-demo-gif.gif)
 
-**Live Demo**🔗 [https://crusto-two.vercel.app](https://crusto-two.vercel.app/)
+**Live Demo**🔗 [crusto-two.vercel.app](https://crusto-two.vercel.app/)
 
 **Admin Credentials**
 
