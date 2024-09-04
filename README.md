@@ -32,7 +32,7 @@
 </p>
 
 <p align="center">
-  <img src="client/src/assets/images/crusto-demo-gif.gif" alt="preview" width="100%" />
+  <img src="client/src/assets/images/crusto-preview.gif" alt="preview" width="100%" />
 </p>
 
 **Live Demo**🔗 [crusto-two.vercel.app](https://crusto-two.vercel.app/)
