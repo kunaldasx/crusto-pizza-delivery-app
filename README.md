@@ -35,7 +35,7 @@
   <img src="client/src/assets/images/crusto-preview.gif" alt="preview" width="100%" />
 </p>
 
-**Live Demo**🔗 [crusto-two.vercel.app](https://crusto-two.vercel.app/)
+🌐 **Live Demo**🔗 [crusto-pizza.vercel.app](https://crusto-pizza.vercel.app)
 
 **Admin Credentials**
 
@@ -140,7 +140,7 @@ Apache 2.0
 
 ---
 
-> [kunaldasx.vercel.app](https://kunaldasx.vercel.app/) &nbsp;&middot;&nbsp;
-> GitHub: [@kunaldasx](https://github.com/kunaldasx) &nbsp;&middot;&nbsp;
-> LinkedIn: [@kunaldasx](https://www.linkedin.com/in/kunaldasx/) &nbsp;&middot;&nbsp;
-> Twitter / X: [@kunaldasx](https://x.com/Kunaldasx) &nbsp;&middot;&nbsp;
+> 🌐 [Visit my website →](https://kunaldasx.vercel.app/)
+> 🖥️ [GitHub](https://github.com/kunaldasx) &nbsp;&middot;&nbsp;
+> 💼 [LinkedIn](https://www.linkedin.com/in/kunaldasx/) &nbsp;&middot;&nbsp;
+> 🐦 [Twitter / X](https://x.com/Kunaldasx) &nbsp;&middot;&nbsp;
