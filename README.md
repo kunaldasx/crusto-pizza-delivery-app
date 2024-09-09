@@ -6,7 +6,9 @@
   <br>
 </h1>
 
-<h4 align="center">A pizza delivery platform that lets you create custom pizzas.</h4>
+<h4 align="center">
+  A pizza delivery platform that lets you create custom pizzas,powered by a smart platform with real-time order and inventory management.
+</h4>
 
 <p align="center">
   <a href="" target="_blank">
