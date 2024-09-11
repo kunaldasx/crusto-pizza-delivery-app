@@ -3,13 +3,14 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import StarDivider from "../widgets/StarDivider";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import hero_banner_1 from "../../assets/images/hero-banner-1.webp";
-import hero_banner_2 from "../../assets/images/hero-banner-2.webp";
-import hero_banner_3 from "../../assets/images/hero-banner-3.webp";
 import custom_pizza from "../../assets/widgets/custom-pizza-icon.svg";
 import { Link } from "react-router-dom";
 
-const slides = [hero_banner_1, hero_banner_2, hero_banner_3];
+const slides = [
+	"https://raw.githubusercontent.com/kunaldasx/crusto-pizza-delivery-app/refs/heads/main/client/src/assets/images/hero-banner-1.webp",
+	"https://raw.githubusercontent.com/kunaldasx/crusto-pizza-delivery-app/refs/heads/main/client/src/assets/images/hero-banner-2.webp",
+	"https://raw.githubusercontent.com/kunaldasx/crusto-pizza-delivery-app/refs/heads/main/client/src/assets/images/hero-banner-3.webp",
+];
 
 const Hero = () => {
 	const windowSize = useWindowSize();
