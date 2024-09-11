@@ -7,7 +7,7 @@
 </h1>
 
 <h4 align="center">
-  A pizza delivery platform that lets you create custom pizzas, powered by a smart platform with real-time order and inventory management.
+  Full-stack pizza delivery platform with custom pizza building, order tracking, inventory management, and an advanced admin dashboard.
 </h4>
 
 <p align="center">
@@ -48,23 +48,23 @@
 
 ## Key Features
 
--   Custom Pizza Builder - Choose ingredients and build pizzas
+- Custom Pizza Builder - Choose ingredients and build pizzas
 
--   Order Tracking - Real-time status updates
+- Order Tracking - Real-time status updates
 
--   User Accounts - Save preferences and history
+- User Accounts - Save preferences and history
 
--   Secure Payments - Multiple payment options
+- Secure Payments - Multiple payment options
 
--   Admin Dashboard - Manage inventory and orders
+- Admin Dashboard - Manage inventory and orders
 
--   Low Stock Alerts - Email notifications for low ingredients
+- Low Stock Alerts - Email notifications for low ingredients
 
--   Analytics - Sales reports and insights
+- Analytics - Sales reports and insights
 
--   Dynamic Pricing - Auto-calculate costs and availability
+- Dynamic Pricing - Auto-calculate costs and availability
 
--   Mobile Responsive - Works on all devices
+- Mobile Responsive - Works on all devices
 
 ## Project Structure
 
@@ -170,15 +170,15 @@ Crusto is an [emailware](https://en.wiktionary.org/wiki/emailware). Meaning, if 
 
 This software uses the following technologies:
 
--   **Frontend**: React 19 + TypeScript + Vite + TailwindCSS + Radix UI
--   **Backend**: Node.js + Express + TypeScript
--   **Database**: MongoDB (Mongoose ODM)
--   **State Management**: Zustand stores
--   **Queue System**: Redis + BullMQ for background jobs
--   **Authentication**: JWT + bcrypt
--   **File Storage**: Cloudinary
--   **Payments**: Razorpay
--   **Email**: Nodemailer
+- **Frontend**: React 19 + TypeScript + Vite + TailwindCSS + Radix UI
+- **Backend**: Node.js + Express + TypeScript
+- **Database**: MongoDB (Mongoose ODM)
+- **State Management**: Zustand stores
+- **Queue System**: Redis + BullMQ for background jobs
+- **Authentication**: JWT + bcrypt
+- **File Storage**: Cloudinary
+- **Payments**: Razorpay
+- **Email**: Nodemailer
 
 ## Support
 
