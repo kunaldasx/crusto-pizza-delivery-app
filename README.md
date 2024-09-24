@@ -1,6 +1,6 @@
 <h1 align="center" style>
   <br>
-  <a href="https://crusto-pizza.vercel.app" target="_blank"><img src="https://raw.githubusercontent.com/kunaldas01/crusto-pizza-delivery-app/refs/heads/main/client/src/assets/widgets/logo.svg" alt="crusto" width="200"></a>
+  <a href="https://crusto-pizza.vercel.app" target="_blank"><img src="https://raw.githubusercontent.com/kunaldasx/crusto-pizza-delivery-app/fbd74ba5185443112375cbb9a0006f84e16a18ca/client/src/assets/widgets/logo.svg" alt="crusto" width="200"></a>
   <br>
   Crusto
   <br>
