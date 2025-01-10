@@ -1,0 +1,60 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Crusto backend API and workers",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "dev:price": "tsx watch src/jobs/workers/priceWorker.ts",
+    "dev:availability": "tsx watch src/jobs/workers/availabilityWorker.ts",
+    "build": "tsc",
+    "postbuild": "echo 'Build completed successfully'",
+    "start": "node dist/server.js",
+    "start:price": "node dist/jobs/workers/priceWorker.js",
+    "start:availability": "node dist/jobs/workers/availabilityWorker.js",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "keywords": [
+    "express",
+    "typescript",
+    "api",
+    "backend"
+  ],
+  "author": "Kunal",
+  "license": "Apache-2.0",
+  "type": "module",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "bullmq": "^5.53.0",
+    "cloudinary": "^2.6.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "ioredis": "^5.6.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.1",
+    "multer": "^2.0.1",
+    "nodemailer": "^6.10.0",
+    "razorpay": "^2.9.6",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/multer": "^1.4.13",
+    "@types/node": "^22.13.10",
+    "@types/nodemailer": "^6.4.17",
+    "@types/uuid": "^10.0.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}
