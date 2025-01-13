@@ -1,7 +1,6 @@
 # === Global ===
 node_modules/
 .env
-.env.*        # for files like .env.local, .env.development, etc.
 .DS_Store
 Thumbs.db
 *.log
@@ -23,7 +22,7 @@ client/node_modules/
 client/build/
 client/dist/
 client/.env
-client/.env.*
+
 
 # Vite or other cache folders
 client/.vite/
@@ -38,7 +37,6 @@ client/.eslintcache/
 server/node_modules/
 server/dist/
 server/.env
-server/.env.*
 
 # PM2 logs or process files (if used)
 server/pids/
