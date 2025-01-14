@@ -27,6 +27,7 @@ import dashboardRoutes from "./routes/dashboard.route.js";
 		app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 		app.use(express.json());
 		app.use(cookieParser());
+		app.set("trust proxy", 1);
 
 		// Health check route - MUST come before catch-all
 		app.get("/health", (req: Request, res: Response) => {
