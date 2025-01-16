@@ -22,6 +22,7 @@ import { useState } from "react";
 
 const ForgotPasswordPage = () => {
 	const forgotPassword = useAuthStore((state) => state.forgotPassword);
+	const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 	const isLoading = useAuthStore((state) => state.isLoading);
 
 	const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
@@ -56,7 +57,9 @@ const ForgotPasswordPage = () => {
 			className="max-w-md w-full bg-gray-800/50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden"
 		>
 			<div className="p-8">
-				<h2 className="heading-2 text-center pt-4 pb-7">Forgot Password</h2>
+				<h2 className="heading-2 text-center pt-4 pb-7">
+					Forgot Password
+				</h2>
 
 				{!isSubmitSuccessful ? (
 					<Form {...form}>
@@ -71,8 +74,9 @@ const ForgotPasswordPage = () => {
 								render={({ field }) => (
 									<FormItem>
 										<FormLabel className="text-gray-300 mb-6 text-center leading-5">
-											Enter your email address and we'll send you a link to
-											reset your password.
+											Enter your email address and we'll
+											send you a link to reset your
+											password.
 										</FormLabel>
 										<FormControl>
 											<Input
@@ -107,14 +111,18 @@ const ForgotPasswordPage = () => {
 						<motion.div
 							initial={{ scale: 0 }}
 							animate={{ scale: 1 }}
-							transition={{ type: "spring", stiffness: 500, damping: 30 }}
+							transition={{
+								type: "spring",
+								stiffness: 500,
+								damping: 30,
+							}}
 							className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4"
 						>
 							<Mail className="h-8 w-8 text-white" />
 						</motion.div>
 						<p className="text-gray-300 mb-6">
-							If an account exists for {form.getValues("email")}, you will
-							receive a password reset link shortly.
+							If an account exists for {form.getValues("email")},
+							you will receive a password reset link shortly.
 						</p>
 					</div>
 				)}
@@ -125,7 +133,9 @@ const ForgotPasswordPage = () => {
 					to={"/auth/login"}
 					className="text-sm text-secondary-foreground font-semibold hover:underline flex items-center"
 				>
-					<ArrowLeft className="h-4 w-4 mr-2" /> Back to Login
+					<ArrowLeft className="h-4 w-4 mr-2" />
+					Back to
+					{isAuthenticated ? " Home" : " Login"}
 				</Link>
 			</div>
 		</motion.div>

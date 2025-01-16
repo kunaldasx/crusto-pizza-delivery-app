@@ -24,6 +24,9 @@ import {
 import { getDefaultValuesFromUser } from "@/lib/profileUtils";
 import AddressForm from "@/components/forms/AddressFrom";
 import { Link } from "react-router-dom";
+import { motion } from "motion/react";
+import shape1 from "../../assets/widgets/shape-1.png";
+import shape2 from "../../assets/widgets/shape-2.png";
 
 const ProfilePage = () => {
 	const user = useAuthStore((state) => state.user);
@@ -127,13 +130,19 @@ const ProfilePage = () => {
 
 			// Strip _ids from addresses
 			const userAddresses = user?.addresses?.map((address) => {
-				const { _id, phone, altPhone, ...rest } = address;
+				const { phone, altPhone, ...rest } = address;
 
 				return {
 					...rest,
-					phone: { countryCode: phone.countryCode, number: phone.number },
+					phone: {
+						countryCode: phone.countryCode,
+						number: phone.number,
+					},
 					altPhone: altPhone?.number
-						? { countryCode: altPhone.countryCode, number: altPhone.number }
+						? {
+								countryCode: altPhone.countryCode,
+								number: altPhone.number,
+						  }
 						: undefined,
 				};
 			});
@@ -141,13 +150,19 @@ const ProfilePage = () => {
 			// Strip _ids from defaultAddress
 			let userDefaultAddress;
 			if (user?.defaultAddress) {
-				const { _id, phone, altPhone, ...rest } = user.defaultAddress;
+				const { phone, altPhone, ...rest } = user.defaultAddress;
 
 				userDefaultAddress = {
 					...rest,
-					phone: { countryCode: phone.countryCode, number: phone.number },
+					phone: {
+						countryCode: phone.countryCode,
+						number: phone.number,
+					},
 					altPhone: altPhone?.number
-						? { countryCode: altPhone.countryCode, number: altPhone.number }
+						? {
+								countryCode: altPhone.countryCode,
+								number: altPhone.number,
+						  }
 						: undefined,
 				};
 			}
@@ -155,19 +170,25 @@ const ProfilePage = () => {
 			if (
 				JSON.stringify(data.addresses ?? []) !==
 					JSON.stringify(userAddresses ?? []) ||
-				JSON.stringify(defaultAddress) !== JSON.stringify(userDefaultAddress)
+				JSON.stringify(defaultAddress) !==
+					JSON.stringify(userDefaultAddress)
 			) {
 				const updatedAddresses =
 					data?.addresses?.map((address) => {
 						const { altPhone, ...rest } = address;
-						return altPhone?.number ? { ...rest, altPhone } : { ...rest };
+						return altPhone?.number
+							? { ...rest, altPhone }
+							: { ...rest };
 					}) ?? [];
 
 				const defaultIndex = parseInt(data.defaultAddressIndex, 10);
 				const defaultAddress = updatedAddresses[defaultIndex] ?? null;
 
 				formData.append("addresses", JSON.stringify(updatedAddresses));
-				formData.append("defaultAddress", JSON.stringify(defaultAddress));
+				formData.append(
+					"defaultAddress",
+					JSON.stringify(defaultAddress)
+				);
 
 				hasChanges = true;
 			}
@@ -180,6 +201,7 @@ const ProfilePage = () => {
 
 			const response = await updateProfile(formData);
 
+			// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 			response.success
 				? toast.success(response.message)
 				: toast.error(response.message);
@@ -193,7 +215,7 @@ const ProfilePage = () => {
 	};
 
 	// Form validation errors
-	const onError = (errors: any) => {
+	const onError = (errors: unknown) => {
 		console.log("Form errors:", errors);
 	};
 
@@ -220,8 +242,8 @@ const ProfilePage = () => {
 	};
 
 	return (
-		<section className="w-screen min-h-screen bg-section-background pt-12 sm:pt-24 md:pt-40 pb-20 px-6 md:px-20 flex flex-col justify-center items-center gap-10">
-			<div className="w-full min-h-screen md:w-3xl bg-popover border-2 rounded-xl p-4 md:p-6">
+		<section className="w-screen relative min-h-screen pt-12 sm:pt-24 md:pt-40 pb-20 px-6 md:px-20 flex flex-col justify-center items-center gap-10">
+			<div className="w-full min-h-screen md:w-3xl bg-section-background border-2 rounded-xl p-4 md:p-6">
 				{isLoadingAuth ? (
 					<div className="w-full h-screen flex justify-center items-center">
 						<Loader className="text-center" />
@@ -238,7 +260,9 @@ const ProfilePage = () => {
 										{editMode && previewImage && (
 											<button
 												type="button"
-												onClick={handleProfileImageDelete}
+												onClick={
+													handleProfileImageDelete
+												}
 												className="absolute top-0 -right-5 transition-colors group duration-200"
 											>
 												<X className="size-5 md:size-6 hover:stroke-secondary-foreground" />
@@ -250,18 +274,27 @@ const ProfilePage = () => {
 											className="w-full h-full rounded-full object-cover"
 										/>
 										<AvatarFallback className="text-3xl w-full h-full rounded-full object-cover">
-											{user?.username?.charAt(0).toUpperCase()}
+											{user?.username
+												?.charAt(0)
+												.toUpperCase()}
 										</AvatarFallback>
 										{editMode && (
 											<div className="w-full h-full rounded-full overflow-hidden absolute inset-0 flex justify-center items-center gap-2 z-10 cursor-pointer bg-black/40 backdrop-blur-xl opacity-0 transition-all duration-300 hover:opacity-100">
 												<FormField
 													control={form.control}
 													name="profileImage"
-													render={({ field: { onChange, ref } }) => (
+													render={({
+														field: {
+															onChange,
+															ref,
+														},
+													}) => (
 														<FormItem>
 															<FormLabel className="w-[200px] h-[200px] flex flex-col justify-center items-center cursor-pointer">
 																<Camera className="size-8 mx-auto" />
-																<span>Upload Image</span>
+																<span>
+																	Upload Image
+																</span>
 															</FormLabel>
 															<FormControl>
 																<Input
@@ -269,9 +302,17 @@ const ProfilePage = () => {
 																	accept="image/*"
 																	ref={ref}
 																	className="hidden"
-																	onChange={(event) => {
-																		handleProfileImageChange(event);
-																		onChange(event.target.files);
+																	onChange={(
+																		event
+																	) => {
+																		handleProfileImageChange(
+																			event
+																		);
+																		onChange(
+																			event
+																				.target
+																				.files
+																		);
 																	}}
 																/>
 															</FormControl>
@@ -284,7 +325,10 @@ const ProfilePage = () => {
 									</Avatar>
 									{editMode ? (
 										<div className="flex gap-2">
-											<button type="submit" className="btn-primary">
+											<button
+												type="submit"
+												className="btn-primary"
+											>
 												Save Profile
 											</button>
 											<button
@@ -296,9 +340,13 @@ const ProfilePage = () => {
 													setEditIndex(null);
 													// Reset form to original data
 													if (originalFormData) {
-														form.reset(originalFormData);
+														form.reset(
+															originalFormData
+														);
 													}
-													setPreviewImage(user?.profileImage || "");
+													setPreviewImage(
+														user?.profileImage || ""
+													);
 												}}
 											>
 												<span>Cancel</span>
@@ -335,7 +383,10 @@ const ProfilePage = () => {
 											</FormLabel>
 											<FormControl>
 												<Input
-													disabled={!editMode || isSubmitting}
+													disabled={
+														!editMode ||
+														isSubmitting
+													}
 													{...field}
 												/>
 											</FormControl>
@@ -351,7 +402,11 @@ const ProfilePage = () => {
 										<FormItem>
 											<FormLabel>Email</FormLabel>
 											<FormControl>
-												<Input type="email" disabled {...field} />
+												<Input
+													type="email"
+													disabled
+													{...field}
+												/>
 											</FormControl>
 											<FormMessage />
 										</FormItem>
@@ -360,7 +415,9 @@ const ProfilePage = () => {
 
 								<div className="space-y-4 mb-4">
 									{Boolean(user?.addresses?.length) && (
-										<h3 className="text-lg font-semibold">Saved Addresses</h3>
+										<h3 className="text-lg font-semibold">
+											Saved Addresses
+										</h3>
 									)}
 									<FormField
 										control={form.control}
@@ -370,70 +427,123 @@ const ProfilePage = () => {
 												<FormControl>
 													<RadioGroup
 														value={field.value}
-														onValueChange={field.onChange}
-														disabled={!editMode || isSubmitting}
+														onValueChange={
+															field.onChange
+														}
+														disabled={
+															!editMode ||
+															isSubmitting
+														}
 														className="space-y-4"
 													>
-														{fields.map((item, index) => (
-															<div
-																key={item.id}
-																className="flex max-md:flex-col items-start md:items-center justify-between gap-4 border p-4 rounded-md"
-															>
-																<div className="space-y-1">
-																	<p className="font-medium">
-																		{item.street}, {item.city}
-																	</p>
-																	<p className="text-sm text-muted-foreground">
-																		{item.state}, {item.country} - {item.zip}
-																	</p>
-																	<p className="text-sm">
-																		📞 {item.phone?.countryCode}{" "}
-																		{item.phone?.number}
-																	</p>
-																	{item.altPhone?.number && (
-																		<p className="text-sm">
-																			📞 {item.altPhone?.countryCode}{" "}
-																			{item.altPhone?.number}
+														{fields.map(
+															(item, index) => (
+																<div
+																	key={
+																		item.id
+																	}
+																	className="flex max-md:flex-col items-start md:items-center justify-between gap-4 border p-4 rounded-md"
+																>
+																	<div className="space-y-1">
+																		<p className="font-medium">
+																			{
+																				item.street
+																			}
+																			,{" "}
+																			{
+																				item.city
+																			}
 																		</p>
-																	)}
-																</div>
-																<div className="flex items-center gap-4">
-																	<div className="flex items-center space-x-2">
-																		<RadioGroupItem
-																			value={String(index)}
-																			id={`default-${index}`}
-																			className="size-4 border-2 border-input-border text-secondary-foreground"
-																		/>
-																		<Label
-																			htmlFor={`default-${index}`}
-																			className="text font-semibold cursor-pointer"
-																		>
-																			Default
-																		</Label>
-																	</div>
-																	{editMode && (
-																		<div className="space-x-2">
-																			<button
-																				type="button"
-																				onClick={() => handleEditAddress(index)}
-																				className="group"
-																			>
-																				<Edit className="size-4 md:size-5 stroke-text hover:stroke-accent transition-colors duration-200" />
-																			</button>
-																			<button
-																				type="button"
-																				onClick={() =>
-																					handleRemoveAddress(index)
+																		<p className="text-sm text-muted-foreground">
+																			{
+																				item.state
+																			}
+																			,{" "}
+																			{
+																				item.country
+																			}{" "}
+																			-{" "}
+																			{
+																				item.zip
+																			}
+																		</p>
+																		<p className="text-sm">
+																			📞{" "}
+																			{
+																				item
+																					.phone
+																					?.countryCode
+																			}{" "}
+																			{
+																				item
+																					.phone
+																					?.number
+																			}
+																		</p>
+																		{item
+																			.altPhone
+																			?.number && (
+																			<p className="text-sm">
+																				📞{" "}
+																				{
+																					item
+																						.altPhone
+																						?.countryCode
+																				}{" "}
+																				{
+																					item
+																						.altPhone
+																						?.number
 																				}
-																				className="group"
+																			</p>
+																		)}
+																	</div>
+																	<div className="flex items-center gap-4">
+																		<div className="flex items-center space-x-2">
+																			<RadioGroupItem
+																				value={String(
+																					index
+																				)}
+																				id={`default-${index}`}
+																				className="size-4 border-2 border-input-border text-secondary-foreground"
+																			/>
+																			<Label
+																				htmlFor={`default-${index}`}
+																				className="text font-semibold cursor-pointer"
 																			>
-																				<Trash2 className="size-4 md:size-5 stroke-text  hover:stroke-accent transition-colors duration-200" />
-																			</button>
+																				Default
+																			</Label>
 																		</div>
-																	)}
+																		{editMode && (
+																			<div className="space-x-2">
+																				<button
+																					type="button"
+																					onClick={() =>
+																						handleEditAddress(
+																							index
+																						)
+																					}
+																					className="group"
+																				>
+																					<Edit className="size-4 md:size-5 stroke-text hover:stroke-accent transition-colors duration-200" />
+																				</button>
+																				<button
+																					type="button"
+																					onClick={() =>
+																						handleRemoveAddress(
+																							index
+																						)
+																					}
+																					className="group"
+																				>
+																					<Trash2 className="size-4 md:size-5 stroke-text  hover:stroke-accent transition-colors duration-200" />
+																				</button>
+																			</div>
+																		)}
+																	</div>
 																</div>
-															</div>
-														))}
+															)
+														)}
 													</RadioGroup>
 												</FormControl>
 												<FormMessage />
@@ -447,11 +557,15 @@ const ProfilePage = () => {
 						{editMode && (
 							<div className="w-full space-y-4 mb-6">
 								<div className="w-full flex justify-between items-center gap-4">
-									<h3 className="text-lg font-semibold">Address</h3>
+									<h3 className="text-lg font-semibold">
+										Address
+									</h3>
 									{!showAddressForm && (
 										<button
 											type="button"
-											onClick={() => setShowAddressForm(true)}
+											onClick={() =>
+												setShowAddressForm(true)
+											}
 											className="text-sm py-1.5 px-2 rounded-md border-2 border-button-border transition-colors duration-300 hover:bg-foreground hover:text-gray-900"
 										>
 											Add New Address
@@ -480,6 +594,42 @@ const ProfilePage = () => {
 					</>
 				)}
 			</div>
+
+			{/* Floating shapes */}
+			<motion.div
+				initial={{ y: 0 }}
+				whileInView={{ y: ["10%", "-10%"] }}
+				transition={{
+					duration: 7,
+					ease: "linear",
+					repeat: Infinity,
+					repeatType: "reverse",
+				}}
+				className="absolute bottom-0 left-0 -z-40"
+			>
+				<img
+					src={shape1}
+					className="w-28 md:w-40 lg:w-full"
+					aria-hidden
+				/>
+			</motion.div>
+			<motion.div
+				initial={{ y: 0 }}
+				whileInView={{ y: ["10%", "-10%"] }}
+				transition={{
+					duration: 7,
+					ease: "linear",
+					repeat: Infinity,
+					repeatType: "reverse",
+				}}
+				className="absolute top-0 right-0 -z-40"
+			>
+				<img
+					src={shape2}
+					className="w-40 md:w-52 lg:w-full"
+					aria-hidden
+				/>
+			</motion.div>
 		</section>
 	);
 };

@@ -35,7 +35,7 @@ const AboutPage = () => {
 	};
 
 	return (
-		<section className="w-full bg-section-background flex justify-center items-center relative overflow-hidden">
+		<section className="w-full flex justify-center items-center relative overflow-hidden">
 			<div className="container w-full flex max-md:flex-col justify-center items-center text-center gap-12 mx-14 my-20 sm:my-32 md:my-52">
 				<motion.div
 					variants={containerVariants}
@@ -58,15 +58,16 @@ const AboutPage = () => {
 						Every Flavor Tells a Story
 					</motion.h2>
 					<motion.p variants={childVariants} className="text">
-						What started as a small kitchen experiment fueled by a love for
-						authentic Italian flavors has grown into a passionate journey of
-						delivering happiness—one pizza at a time. At the heart of our story
-						is a commitment to quality, creativity, and community. Every slice
-						we serve is crafted with hand-picked ingredients, a perfected crust,
-						and flavors that speak louder than words. Whether it’s a classic
-						Margherita or a bold new creation, we believe every bite should tell
-						a story worth sharing. Welcome to our table—where your cravings meet
-						our craft.
+						What started as a small kitchen experiment fueled by a
+						love for authentic Italian flavors has grown into a
+						passionate journey of delivering happiness—one pizza at
+						a time. At the heart of our story is a commitment to
+						quality, creativity, and community. Every slice we serve
+						is crafted with hand-picked ingredients, a perfected
+						crust, and flavors that speak louder than words. Whether
+						it’s a classic Margherita or a bold new creation, we
+						believe every bite should tell a story worth sharing.
+						Welcome to our table—where your cravings meet our craft.
 					</motion.p>
 
 					<motion.a

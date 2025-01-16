@@ -24,9 +24,12 @@ import { toast } from "sonner";
 import AddressForm from "@/components/forms/AddressFrom";
 import { useDashboardStore } from "@/store/useDashboardStore";
 import { ActivityCategory } from "@/types/DashboardState";
+import shape1 from "../../assets/widgets/shape-1.png";
+import shape2 from "../../assets/widgets/shape-2.png";
 
 declare global {
 	interface Window {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		Razorpay: new (options: any) => any;
 	}
 }
@@ -78,6 +81,7 @@ const CartPage = () => {
 	const handleClearCart = async () => {
 		const response = await clearCart(user?._id ?? null);
 
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 		response.success
 			? toast.success(response.message)
 			: toast.error(response.message);
@@ -113,6 +117,7 @@ const CartPage = () => {
 
 			const response = await createOrder(amount);
 
+			// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 			response.success
 				? toast.success(response.message)
 				: toast.error(response.message);
@@ -122,7 +127,11 @@ const CartPage = () => {
 				return;
 			}
 
-			const { id: order_id, amount: order_amount, currency } = response.order;
+			const {
+				id: order_id,
+				amount: order_amount,
+				currency,
+			} = response.order;
 
 			const items = createOrderItems(cart.items);
 
@@ -138,7 +147,9 @@ const CartPage = () => {
 						user: user._id,
 						items,
 						orderTotalPrice: cart?.cartTotalPrice
-							? Math.round((cart.cartTotalPrice - discount) * 100) / 100
+							? Math.round(
+									(cart.cartTotalPrice - discount) * 100
+							  ) / 100
 							: 0,
 						deliveryAddress,
 						razorpayOrderId: response.razorpay_order_id,
@@ -157,7 +168,10 @@ const CartPage = () => {
 								orderId: response.razorpay_order_id,
 								totalItems: items.length,
 								price: cart?.cartTotalPrice
-									? Math.round((cart.cartTotalPrice - discount) * 100) / 100
+									? Math.round(
+											(cart.cartTotalPrice - discount) *
+												100
+									  ) / 100
 									: 0,
 							},
 						};
@@ -199,7 +213,7 @@ const CartPage = () => {
 	};
 
 	return (
-		<section className="w-screen min-h-screen bg-section-background relative pt-20 sm:pt-30 md:pt-40 pb-20 px-8 md:px-20">
+		<section className="w-screen min-h-screen relative pt-20 sm:pt-30 md:pt-40 pb-20 px-8 md:px-20">
 			<div className="w-full flex justify-between items-center">
 				<h2 className="heading-2 mb-4">My Cart</h2>
 				{(cart?.items.length ?? 0) > 0 && (
@@ -210,11 +224,13 @@ const CartPage = () => {
 						<AlertDialogContent className="bg-popover border-2 py-6 px-8">
 							<AlertDialogHeader>
 								<AlertDialogTitle>
-									Are you absolutely sure, you want to clear🚫 your cart ?
+									Are you absolutely sure, you want to clear🚫
+									your cart ?
 								</AlertDialogTitle>
 								<AlertDialogDescription>
-									This action cannot be undone. This will permanently delete
-									your cart and remove it's data from our servers.
+									This action cannot be undone. This will
+									permanently delete your cart and remove it's
+									data from our servers.
 								</AlertDialogDescription>
 							</AlertDialogHeader>
 							<AlertDialogFooter>
@@ -235,7 +251,7 @@ const CartPage = () => {
 
 			<Separator />
 
-			<div className="w-full bg-popover flex max-lg:flex-col-reverse justify-center max-lg:items-center items-start gap-8 border-2 rounded-xl p-4 md:p-6">
+			<div className="w-full bg-section-background flex max-lg:flex-col-reverse justify-center max-lg:items-center items-start gap-8 border-2 rounded-xl p-4 md:p-6">
 				{!isLoadingCart && cart?.items.length ? (
 					<>
 						<motion.ul
@@ -263,11 +279,15 @@ const CartPage = () => {
 										key={item._id}
 										className="min-w-full flex justify-between items-center gap-4"
 									>
-										<p className="text-sm lg:text-[16px]">{item.pizza.name}</p>
+										<p className="text-sm lg:text-[16px]">
+											{item.pizza.name}
+										</p>
 
 										<p className="text-sm lg:text-[16px] whitespace-nowrap">
 											₹ {item.basePrice.toFixed(2)}
-											<span className="text-muted-foreground mx-2">x</span>
+											<span className="text-muted-foreground mx-2">
+												x
+											</span>
 											{item.quantity}
 										</p>
 									</li>
@@ -275,19 +295,25 @@ const CartPage = () => {
 							</ul>
 							<Separator />
 							<div className="w-full flex justify-between items-center gap-4">
-								<p className="text-sm lg:text-[16px] font-semibold">Total:</p>
 								<p className="text-sm lg:text-[16px] font-semibold">
-									₹ {(cart?.cartTotalPrice).toFixed(2)}
+									Total:
+								</p>
+								<p className="text-sm lg:text-[16px] font-semibold">
+									₹ {(cart?.cartTotalPrice ?? 0).toFixed(2)}
 								</p>
 							</div>
 
 							<div className="w-full flex justify-between items-center gap-4">
-								<p className="text-sm lg:text-[16px]">Shipping:</p>
+								<p className="text-sm lg:text-[16px]">
+									Shipping:
+								</p>
 								<p className="text-sm lg:text-[16px]">Free</p>
 							</div>
 
 							<div className="w-full flex justify-between items-center gap-4">
-								<p className="text-sm lg:text-[16px]">Discount:</p>
+								<p className="text-sm lg:text-[16px]">
+									Discount:
+								</p>
 								<p className="text-sm lg:text-[16px]">₹ 36</p>
 							</div>
 
@@ -317,10 +343,13 @@ const CartPage = () => {
 										<AlertDialogContent className="bg-popover border-2 py-6 px-8">
 											<AlertDialogHeader>
 												<AlertDialogTitle>
-													Cart contains unavailable items
+													Cart contains unavailable
+													items
 												</AlertDialogTitle>
 												<AlertDialogDescription>
-													Please remove all unavailable items from the cart.
+													Please remove all
+													unavailable items from the
+													cart.
 												</AlertDialogDescription>
 											</AlertDialogHeader>
 											<AlertDialogFooter>
@@ -340,9 +369,12 @@ const CartPage = () => {
 										</AlertDialogTrigger>
 										<AlertDialogContent className="bg-popover border-2 py-6 px-8">
 											<AlertDialogHeader>
-												<AlertDialogTitle>Login required</AlertDialogTitle>
+												<AlertDialogTitle>
+													Login required
+												</AlertDialogTitle>
 												<AlertDialogDescription>
-													Please login to continue with your purchase.
+													Please login to continue
+													with your purchase.
 												</AlertDialogDescription>
 											</AlertDialogHeader>
 											<AlertDialogFooter>
@@ -364,7 +396,9 @@ const CartPage = () => {
 								<button
 									onClick={() =>
 										handleCheckout(
-											cart?.cartTotalPrice ? cart.cartTotalPrice - discount : 0
+											cart?.cartTotalPrice
+												? cart.cartTotalPrice - discount
+												: 0
 										)
 									}
 									disabled={isLoadingOrder}
@@ -397,6 +431,42 @@ const CartPage = () => {
 					onCancel={onCancel}
 				/>
 			)}
+
+			{/* Floating shapes */}
+			<motion.div
+				initial={{ y: 0 }}
+				whileInView={{ y: ["10%", "-10%"] }}
+				transition={{
+					duration: 7,
+					ease: "linear",
+					repeat: Infinity,
+					repeatType: "reverse",
+				}}
+				className="absolute bottom-0 left-0 -z-40"
+			>
+				<img
+					src={shape1}
+					className="w-28 md:w-40 lg:w-full"
+					aria-hidden
+				/>
+			</motion.div>
+			<motion.div
+				initial={{ y: 0 }}
+				whileInView={{ y: ["10%", "-10%"] }}
+				transition={{
+					duration: 7,
+					ease: "linear",
+					repeat: Infinity,
+					repeatType: "reverse",
+				}}
+				className="absolute top-0 right-0 -z-40"
+			>
+				<img
+					src={shape2}
+					className="w-40 md:w-52 lg:w-full"
+					aria-hidden
+				/>
+			</motion.div>
 		</section>
 	);
 };

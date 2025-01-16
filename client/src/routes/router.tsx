@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import RootLayout from "@/layouts/RootLayout";
 import EmailVerificationPage from "@/pages/auth/EmailVerificationPage";
 import ForgotPasswordPage from "@/pages/auth/ForgotPasswordPage";

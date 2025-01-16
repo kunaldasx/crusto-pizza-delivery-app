@@ -9,6 +9,8 @@ import PizzaPreview from "@/components/PizzaPreview";
 import { useAuthStore } from "@/store/useAuthStore";
 import { toast } from "sonner";
 import { useSearchParams } from "react-router-dom";
+import shape1 from "../../assets/widgets/shape-1.png";
+import shape2 from "../../assets/widgets/shape-2.png";
 
 const CustomPizzaPage = () => {
 	const [searchParams] = useSearchParams();
@@ -16,7 +18,9 @@ const CustomPizzaPage = () => {
 	const user = useAuthStore((state) => state.user);
 
 	const customPizzas = useCustomPizzaStore((state) => state.customPizzas);
-	const isLoadingCustomPizzas = useCustomPizzaStore((state) => state.isLoading);
+	const isLoadingCustomPizzas = useCustomPizzaStore(
+		(state) => state.isLoading
+	);
 	const deleteCustomPizza = useCustomPizzaStore(
 		(state) => state.deleteCustomPizza
 	);
@@ -72,11 +76,14 @@ const CustomPizzaPage = () => {
 	}, [searchParams]);
 
 	return (
-		<section className="w-screen min-h-screen bg-section-background relative pt-20 sm:pt-30 md:pt-40 pb-20 px-4 md:px-20">
+		<section className="w-screen relative min-h-screen pt-20 sm:pt-30 md:pt-40 pb-20 px-4 md:px-20">
 			{!editMode ? (
 				<div className="w-full flex justify-between items-center">
 					<h2 className="heading-2 mb-4">My Pizzas</h2>
-					<button className="btn-primary mb-4" onClick={handleCreatePizza}>
+					<button
+						className="btn-primary mb-4"
+						onClick={handleCreatePizza}
+					>
 						Create a Custom Pizza
 					</button>
 				</div>
@@ -95,7 +102,7 @@ const CustomPizzaPage = () => {
 			)}
 
 			{!editMode ? (
-				<div className="w-full bg-popover flex justify-center items-center border-2 rounded-xl px-4">
+				<div className="w-full bg-section-background flex justify-center items-center border-2 rounded-xl px-4">
 					{!isLoadingCustomPizzas && customPizzas.length ? (
 						<motion.ul
 							initial={{ y: -30, opacity: 0 }}
@@ -105,7 +112,8 @@ const CustomPizzaPage = () => {
 							className="w-full gap-4 md:gap-6 py-4 justify-start px-auto"
 							style={{
 								display: "grid",
-								gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+								gridTemplateColumns:
+									"repeat(auto-fill, minmax(280px, 1fr))",
 							}}
 						>
 							{[...customPizzas].reverse().map((pizza) => (
@@ -146,6 +154,42 @@ const CustomPizzaPage = () => {
 					/>
 				)}
 			</AnimatePresence>
+
+			{/* Floating Shapes */}
+			<motion.div
+				initial={{ y: 0 }}
+				whileInView={{ y: ["10%", "-10%"] }}
+				transition={{
+					duration: 7,
+					ease: "linear",
+					repeat: Infinity,
+					repeatType: "reverse",
+				}}
+				className="absolute bottom-0 left-0 -z-40"
+			>
+				<img
+					src={shape1}
+					className="w-28 md:w-40 lg:w-full"
+					aria-hidden
+				/>
+			</motion.div>
+			<motion.div
+				initial={{ y: 0 }}
+				whileInView={{ y: ["10%", "-10%"] }}
+				transition={{
+					duration: 7,
+					ease: "linear",
+					repeat: Infinity,
+					repeatType: "reverse",
+				}}
+				className="absolute top-0 right-0 -z-40"
+			>
+				<img
+					src={shape2}
+					className="w-40 md:w-52 lg:w-full"
+					aria-hidden
+				/>
+			</motion.div>
 		</section>
 	);
 };

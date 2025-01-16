@@ -3,9 +3,9 @@ import { Mail, Phone } from "lucide-react";
 
 const ContactPage = () => {
 	return (
-		<section className="w-screen min-h-screen bg-section-background pt-20 sm:pt-24 md:pt-40 pb-20 px-6 md:px-20 flex flex-col justify-start items-center gap-10">
+		<section className="w-screen min-h-screen pt-20 sm:pt-24 md:pt-40 pb-20 px-6 md:px-20 flex flex-col justify-start items-center gap-10">
 			<h2 className="heading-2">Contact Us</h2>
-			<div className="w-full md:w-3xl bg-popover border-2 rounded-xl p-4 md:p-6">
+			<div className="w-full md:w-3xl bg-section-background border-2 rounded-xl p-4 md:p-6">
 				<div className="flex flex-col justify-center items-start gap-6">
 					{/* Contact Section */}
 					<div className="flex flex-col justify-center items-start gap-2">
@@ -16,8 +16,13 @@ const ContactPage = () => {
 									href="tel:+1 123 456 7890"
 									className="flex justify-center items-center gap-1 md:gap-2 hover:text-secondary-foreground transition-colors duration-300"
 								>
-									<Phone className="size-4 md:size-5" aria-hidden />
-									<span className="text-xs md:text-sm">+1 123 456 7890</span>
+									<Phone
+										className="size-4 md:size-5"
+										aria-hidden
+									/>
+									<span className="text-xs md:text-sm">
+										+1 123 456 7890
+									</span>
 								</a>
 							</li>
 							<li>
@@ -25,8 +30,13 @@ const ContactPage = () => {
 									href="mailto:service@crusto.com"
 									className="flex justify-center items-center gap-1 md:gap-2 hover:text-secondary-foreground transition-colors duration-300"
 								>
-									<Mail className="size-4 md:size-5" aria-hidden />
-									<span className="text-xs md:text-sm">service@crusto.com</span>
+									<Mail
+										className="size-4 md:size-5"
+										aria-hidden
+									/>
+									<span className="text-xs md:text-sm">
+										service@crusto.com
+									</span>
 								</a>
 							</li>
 						</ul>

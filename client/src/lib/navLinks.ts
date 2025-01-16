@@ -133,25 +133,25 @@ export const socialLinks = [
 	{
 		label: "Instagram",
 		icon: Instagram,
-		href: "#",
+		href: "",
 		hoverBg: "hover:bg-instagram",
 	},
 	{
 		label: "Twitter",
 		icon: Twitter,
-		href: "#",
+		href: "",
 		hoverBg: "hover:bg-twitter",
 	},
 	{
 		label: "LinkedIn",
 		icon: LinkedIn,
-		href: "#",
+		href: "",
 		hoverBg: "hover:bg-linkedIn",
 	},
 	{
 		label: "Github",
 		icon: Github,
-		href: "#",
+		href: "",
 		hoverBg: "hover:bg-github",
 	},
 ];
