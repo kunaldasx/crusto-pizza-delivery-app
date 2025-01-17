@@ -1,4 +1,6 @@
+import { generateTimestamp } from "../utils/generateTimestamp.js";
 import {
+	INGREDIENT_OUT_OF_STOCK_TEMPLATE,
 	PASSWORD_RESET_REQUEST_TEMPLATE,
 	PASSWORD_RESET_SUCCESS_TEMPLATE,
 	VERIFICATION_EMAIL_TEMPLATE,
@@ -43,7 +45,7 @@ export const sendWelcomeEmail = async (email: string, name: string) => {
 			subject: "Welcome",
 			html: WELCOME_EMAIL_TEMPLATE.replace(/\{companyName\}/g, "Crusto")
 				.replace("{customerName}", name)
-				.replace("{productPageURL}", `${process.env.CLIENT_URL}/product`),
+				.replace("{productPageURL}", `${process.env.CLIENT_URL}/#menu`),
 		});
 
 		console.log("Welcome email sent successfully", response);
@@ -65,7 +67,10 @@ export const sendPasswordResetEmail = async (
 			},
 			to: email,
 			subject: "Reset your password",
-			html: PASSWORD_RESET_REQUEST_TEMPLATE.replace("{resetURL}", resetURL),
+			html: PASSWORD_RESET_REQUEST_TEMPLATE.replace(
+				"{resetURL}",
+				resetURL
+			),
 		});
 
 		console.log("Password reset email sent", response);
@@ -91,5 +96,36 @@ export const sendResetSuccessEmail = async (email: string) => {
 	} catch (error) {
 		console.error(`Error sending password reset success email`, error);
 		throw new Error(`Error sending password reset success email: ${error}`);
+	}
+};
+
+export const sendStockAlertEmail = async (
+	ingredientName: string,
+	ingredientStock: number,
+	pizzaCount: number
+) => {
+	try {
+		const timestamp = generateTimestamp();
+		const response = await mailClient.sendMail({
+			from: {
+				name: "Crusto",
+				address: process.env.NODEMAILER_SENDER_EMAIL!,
+			},
+			to: process.env.ADMIN_EMAIL,
+			subject: `[WARNING] Low Stock Alert - [${ingredientName}]`,
+			html: INGREDIENT_OUT_OF_STOCK_TEMPLATE.replace(
+				"{companyName}",
+				"Crusto"
+			)
+				.replace("{ingredientName}", ingredientName)
+				.replace("{pizza_count}", pizzaCount.toString())
+				.replace("{stock}", ingredientStock.toString())
+				.replace("{date}", timestamp.date)
+				.replace("{time}", timestamp.time),
+		});
+		console.log(`Low stock alert email sent [${ingredientName}]`, response);
+	} catch (error) {
+		console.error(`Error sending low stock alert email`, error);
+		throw new Error(`Error sending low stock alert email: ${error}`);
 	}
 };
