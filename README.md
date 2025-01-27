@@ -27,12 +27,17 @@
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
   <a href="#how-to-contribute">How To Contribute</a> •
-  <a href="#technologies">Credits</a> •
-  <a href="#related">Related</a> •
+  <a href="#technologies">Technologies</a> •
   <a href="#license">License</a>
 </p>
 
-![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif)
+![screenshot](client/src/assets/images/demo.gif)
+
+[**Live Demo**🔗 https://crusto.onrender.com/](https://crusto.onrender.com/)
+
+> **Admin Credentials**
+> Email: admin@gmail.com
+> Password: Admin@123
 
 ## Key Features
 
@@ -95,9 +100,6 @@ $ cd server
 $ npm run dev:availability # Stock management
 ```
 
-> **Note**
-> If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
-
 ## How to Contribute
 
 1. Clone repo and create a new branch: `$ https://github.com/kunaldas01/crusto-pizza-delivery-app -b name_for_new_branch`.
@@ -112,13 +114,13 @@ Markdownify is an [emailware](https://en.wiktionary.org/wiki/emailware). Meaning
 
 This software uses the following technologies:
 
--   [React.js](http://electron.atom.io/)
--   [Typescript](http://electron.atom.io/)
--   [Node.js](https://github.com/arvida/emoji-cheat-sheet.com)
--   [Express.js](https://nodejs.org/)
--   [MongoDB](http://showdownjs.github.io/showdown/)
--   [Redis](http://codemirror.net/)
--   [BullMQ](https://highlightjs.org/)
+-   React.js
+-   Typescript
+-   Node.js
+-   Express.js
+-   MongoDB
+-   Redis
+-   BullMQ
 
 ## Support
 
@@ -132,8 +134,6 @@ Apache 2.0
 
 ---
 
-> [amitmerchant.com]() &nbsp;&middot;&nbsp;
-> GitHub [@](https://github.com/amitmerchant1990) &nbsp;&middot;&nbsp;
-> Twitter [@amit_merchant](https://twitter.com/amit_merchant)
-
-<!-- MERN stack with user/admin authentication; Custom pizza builder - bases, sauces, cheese, veggies, extras; Razorpay payment integration (test mode); Admin inventory management system; Auto stock updates after orders; Email alerts for low stock threshold; Order tracking - status updates (received → kitchen → delivery); Real-time updates in user dashboard; Redis caching for prices and stock; Background workers with BullMQ -->
+> [kunaldas.com]() &nbsp;&middot;&nbsp;
+> GitHub [@kunaldas01]() &nbsp;&middot;&nbsp;
+> Twitter [@kunaldas]()
