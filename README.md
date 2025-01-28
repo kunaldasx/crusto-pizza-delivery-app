@@ -35,9 +35,12 @@
 
 [**Live Demo**🔗 https://crusto.onrender.com/](https://crusto.onrender.com/)
 
-> **Admin Credentials**
+**Admin Credentials**
+
+```
 > Email: admin@gmail.com
 > Password: Admin@123
+```
 
 ## Key Features
 
