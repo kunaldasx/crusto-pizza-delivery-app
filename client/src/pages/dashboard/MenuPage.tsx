@@ -3,7 +3,7 @@ import ProductCard from "@/components/ProductCard";
 import { useEffect, useState } from "react";
 import { Loader, X } from "lucide-react";
 import { PizzaType } from "@/types/PizzaState";
-import PizzaPreview from "@/components/PizzaPreview";
+import ProductPreview from "@/components/ProductPreview";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import {
@@ -123,7 +123,8 @@ const Menu = () => {
 							className="w-full gap-4 md:gap-6 py-4 justify-start px-auto"
 							style={{
 								display: "grid",
-								gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+								gridTemplateColumns:
+									"repeat(auto-fill, minmax(280px, 1fr))",
 							}}
 						>
 							{[...pizzas].reverse().map((pizza) => (
@@ -148,13 +149,16 @@ const Menu = () => {
 					)}
 				</div>
 			) : (
-				<PizzaForm handleCloseForm={handleCloseForm} pizza={editingPizza} />
+				<PizzaForm
+					handleCloseForm={handleCloseForm}
+					pizza={editingPizza}
+				/>
 			)}
 
 			{/* Pizza Details Popover */}
 			<AnimatePresence>
 				{viewingPizza && (
-					<PizzaPreview
+					<ProductPreview
 						pizza={viewingPizza}
 						isMenuProduct={true}
 						handleClosePizza={handleClosePizza}

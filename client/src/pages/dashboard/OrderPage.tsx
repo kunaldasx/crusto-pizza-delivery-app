@@ -27,7 +27,7 @@ const OrderPage = () => {
 
 	useEffect(() => {
 		getAllOrders();
-	}, []);
+	}, [getAllOrders]);
 
 	useEffect(() => {
 		// ✅ Filter based on `id` from useParams
@@ -65,12 +65,21 @@ const OrderPage = () => {
 				<div className="w-full bg-popover border-2 p-4 mt-12 rounded-xl">
 					<div className="w-full space-y-4">
 						<p className="text">
-							Order on {new Date(order.orderedOn).toLocaleString()}
+							Order on{" "}
+							{new Date(order.orderedOn).toLocaleString()}
 						</p>
-						<p className="text-lg font-semibold capitalize">{order?.status}</p>
+						<p className="text-lg font-semibold capitalize">
+							{order?.status === OrderStatus.OutForDelivery
+								? "Out for delivery"
+								: order.status}
+						</p>
 						<Progress
-							value={getOrderProgress(order.status as OrderStatus)}
-							className={getProgressColor(order.status as OrderStatus)}
+							value={getOrderProgress(
+								order.status as OrderStatus
+							)}
+							className={getProgressColor(
+								order.status as OrderStatus
+							)}
 						/>
 					</div>
 
@@ -100,10 +109,13 @@ const OrderPage = () => {
 
 							{/* Delivery Address */}
 							<div className="w-full flex flex-col justify-center items-start gap-2">
-								<p className="text-lg font-medium">Delivery Address:</p>
+								<p className="text-lg font-medium">
+									Delivery Address:
+								</p>
 								<div className="w-full border p-4 rounded-md space-y-1">
 									<p className="text-sm font-medium">
-										{order.deliveryAddress.street}, {order.deliveryAddress.city}
+										{order.deliveryAddress.street},{" "}
+										{order.deliveryAddress.city}
 									</p>
 									<p className="text-sm text-muted-foreground">
 										{order.deliveryAddress.state},{" "}
@@ -111,13 +123,24 @@ const OrderPage = () => {
 										{order.deliveryAddress.zip}
 									</p>
 									<p className="text-sm">
-										📞 {order.deliveryAddress.phone?.countryCode}{" "}
+										📞{" "}
+										{
+											order.deliveryAddress.phone
+												?.countryCode
+										}{" "}
 										{order.deliveryAddress.phone?.number}
 									</p>
 									{order.deliveryAddress.altPhone?.number && (
 										<p className="text-sm">
-											📞 {order.deliveryAddress.altPhone?.countryCode}{" "}
-											{order.deliveryAddress.altPhone?.number}
+											📞{" "}
+											{
+												order.deliveryAddress.altPhone
+													?.countryCode
+											}{" "}
+											{
+												order.deliveryAddress.altPhone
+													?.number
+											}
 										</p>
 									)}
 								</div>
@@ -133,7 +156,9 @@ const OrderPage = () => {
 										key={idx}
 										className="min-w-full flex justify-between items-center gap-4"
 									>
-										<p className="text-sm lg:text-[16px]">{item.name}</p>
+										<p className="text-sm lg:text-[16px]">
+											{item.name}
+										</p>
 
 										<p className="text-sm lg:text-[16px] whitespace-nowrap">
 											₹ {item.totalPrice.toFixed(2)}
@@ -144,12 +169,16 @@ const OrderPage = () => {
 							<Separator />
 
 							<div className="w-full flex justify-between items-center gap-4">
-								<p className="text-sm lg:text-[16px]">Shipping:</p>
+								<p className="text-sm lg:text-[16px]">
+									Shipping:
+								</p>
 								<p className="text-sm lg:text-[16px]">Free</p>
 							</div>
 
 							<div className="w-full flex justify-between items-center gap-4">
-								<p className="text-sm lg:text-[16px]">Discount:</p>
+								<p className="text-sm lg:text-[16px]">
+									Discount:
+								</p>
 								<p className="text-sm lg:text-[16px]">₹ 36</p>
 							</div>
 

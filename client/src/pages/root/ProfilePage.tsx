@@ -246,7 +246,7 @@ const ProfilePage = () => {
 			<div className="w-full min-h-screen md:w-3xl bg-section-background border-2 rounded-xl p-4 md:p-6">
 				{isLoadingAuth ? (
 					<div className="w-full h-screen flex justify-center items-center">
-						<Loader className="text-center" />
+						<Loader className="w-6 h-6 animate-spin text-center" />
 					</div>
 				) : (
 					<>

@@ -61,8 +61,9 @@ const Services = () => {
 						Artisan Pizza, Delivered Fast
 					</motion.h2>
 					<motion.p variants={childVariants} className="text">
-						Every bite, a masterpiece. Curated ingredients, custom creations,
-						and no compromises—brought straight to your door.
+						Every bite, a masterpiece. Curated ingredients, custom
+						creations, and no compromises—brought straight to your
+						door.
 					</motion.p>
 				</motion.div>
 
@@ -117,7 +118,11 @@ const Services = () => {
 					}}
 					className="absolute bottom-0 left-0 -z-40"
 				>
-					<img src={shape1} className="w-28 md:w-40 lg:w-full" aria-hidden />
+					<img
+						src={shape1}
+						className="w-28 md:w-40 lg:w-full"
+						aria-hidden
+					/>
 				</motion.div>
 				<motion.div
 					initial={{ y: 0 }}
@@ -130,7 +135,11 @@ const Services = () => {
 					}}
 					className="absolute top-0 right-0 -z-40"
 				>
-					<img src={shape2} className="w-40 md:w-52 lg:w-full" aria-hidden />
+					<img
+						src={shape2}
+						className="w-40 md:w-52 lg:w-full"
+						aria-hidden
+					/>
 				</motion.div>
 			</div>
 		</section>

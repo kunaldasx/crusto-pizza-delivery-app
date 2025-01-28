@@ -6,6 +6,8 @@ import {
 } from "../../utils/availabilityUtils.js";
 import Ingredient from "../../models/ingredient.model.js";
 import { sendStockAlertEmail } from "../../nodemailer/emails.js";
+import { Activity } from "../../models/activity.model.js";
+import { addActivityHelper } from "../../utils/addActivityHelper.js";
 
 const availabilityProcessor = async (job: Job) => {
 	const { ingredientId } = job.data;
@@ -46,6 +48,19 @@ const availabilityProcessor = async (job: Job) => {
 		const ingredient = await Ingredient.findById(ingredientId).lean();
 
 		if (ingredient && ingredient?.stock < 20) {
+			// Add activity
+			const activityData = {
+				type: "stock",
+				name: ingredient.name,
+				timestamp: new Date(),
+				metadata: {
+					id: ingredient._id,
+					count: ingredient.stock,
+				},
+			};
+
+			await addActivityHelper(activityData);
+
 			await sendStockAlertEmail(
 				ingredient.name,
 				ingredient.stock,

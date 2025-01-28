@@ -162,11 +162,11 @@ const CartPage = () => {
 						// Save activity
 						const activity = {
 							type: ActivityCategory.Order,
-							username: user.username,
+							name: user.username,
 							timestamp: new Date(),
 							metadata: {
-								orderId: response.razorpay_order_id,
-								totalItems: items.length,
+								id: response.razorpay_order_id,
+								count: items.length,
 								price: cart?.cartTotalPrice
 									? Math.round(
 											(cart.cartTotalPrice - discount) *

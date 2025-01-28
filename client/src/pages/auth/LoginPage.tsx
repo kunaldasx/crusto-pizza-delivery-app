@@ -21,7 +21,9 @@ const LoginPage = () => {
 
 	const login = useAuthStore((state) => state.login);
 	const intendedRoute = useAuthStore((state) => state.intendedRoute);
-	const clearIntendedRoute = useAuthStore((state) => state.clearIntendedRoute);
+	const clearIntendedRoute = useAuthStore(
+		(state) => state.clearIntendedRoute
+	);
 	const isLoading = useAuthStore((state) => state.isLoading);
 
 	const form = useForm<LoginFormType>({
@@ -54,10 +56,12 @@ const LoginPage = () => {
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5 }}
-			className="max-w-md w-full bg-gray-800/50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden"
+			className="max-w-md w-full bg-gray-800/50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden my-12"
 		>
 			<div className="w-full p-8">
-				<h2 className="heading-2 text-center pt-4 pb-7">Welcome Back</h2>
+				<h2 className="heading-2 text-center pt-4 pb-7">
+					Welcome Back
+				</h2>
 
 				<Form {...form}>
 					<form

@@ -7,6 +7,7 @@ export const orderStatusSchema = z.object({
 			OrderStatus.Pending,
 			OrderStatus.Confirmed,
 			OrderStatus.Preparing,
+			OrderStatus.OutForDelivery,
 			OrderStatus.Delivered,
 			OrderStatus.Cancelled,
 		],

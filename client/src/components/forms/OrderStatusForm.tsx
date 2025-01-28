@@ -64,6 +64,7 @@ const OrderStatusForm = ({
 			}
 		} catch (error) {
 			toast.error("Failed to update order status");
+			console.log("Order status form: ", error);
 			// ✅ Reset to last known good state
 			form.setValue("status", lastSubmittedStatus);
 		} finally {
@@ -137,19 +138,36 @@ const OrderStatusForm = ({
 									<SelectContent className="z-150">
 										<SelectGroup>
 											<SelectLabel>Status</SelectLabel>
-											<SelectItem value={OrderStatus.Pending}>
+											<SelectItem
+												value={OrderStatus.Pending}
+											>
 												Pending
 											</SelectItem>
-											<SelectItem value={OrderStatus.Confirmed}>
+											<SelectItem
+												value={OrderStatus.Confirmed}
+											>
 												Confirmed
 											</SelectItem>
-											<SelectItem value={OrderStatus.Preparing}>
+											<SelectItem
+												value={OrderStatus.Preparing}
+											>
 												Preparing
 											</SelectItem>
-											<SelectItem value={OrderStatus.Delivered}>
+											<SelectItem
+												value={
+													OrderStatus.OutForDelivery
+												}
+											>
+												Out for delivery
+											</SelectItem>
+											<SelectItem
+												value={OrderStatus.Delivered}
+											>
 												Delivered
 											</SelectItem>
-											<SelectItem value={OrderStatus.Cancelled}>
+											<SelectItem
+												value={OrderStatus.Cancelled}
+											>
 												Cancelled
 											</SelectItem>
 										</SelectGroup>

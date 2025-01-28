@@ -3,16 +3,17 @@ import { StoreResultType } from "./StoreResultType";
 export enum ActivityCategory {
 	Signup = "signup",
 	Order = "order",
+	Stock = "stock",
 }
 
 export interface ActivityType {
 	type: ActivityCategory;
-	username: string;
+	name: string;
 	timestamp: Date;
 	metadata?: {
-		orderId: string;
-		totalItems: number;
-		price: number;
+		id: string;
+		count: number;
+		price?: number;
 	};
 }
 

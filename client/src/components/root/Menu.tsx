@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { usePizzaStore } from "@/store/usePizzaStore";
 import { PizzaType } from "@/types/PizzaState";
 import { useState } from "react";
-import PizzaPreview from "../PizzaPreview";
+import ProductPreview from "../ProductPreview";
 import { Loader } from "lucide-react";
 
 const rating = [
@@ -87,7 +87,8 @@ const Menu = () => {
 					className="w-full gap-4 md:gap-6 py-4 justify-start px-auto"
 					style={{
 						display: "grid",
-						gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+						gridTemplateColumns:
+							"repeat(auto-fill, minmax(280px, 1fr))",
 					}}
 				>
 					{!isLoadingPizzas && pizzas.length ? (
@@ -106,7 +107,9 @@ const Menu = () => {
 							{isLoadingPizzas ? (
 								<Loader className="w-6 h-6 animate-spin mx-auto" />
 							) : (
-								<p className="text text-center">No pizzas to show</p>
+								<p className="text text-center">
+									No pizzas to show
+								</p>
 							)}
 						</div>
 					)}
@@ -116,7 +119,7 @@ const Menu = () => {
 			{/* Pizza Details Popover */}
 			<AnimatePresence>
 				{viewingPizza && (
-					<PizzaPreview
+					<ProductPreview
 						pizza={viewingPizza}
 						handleClosePizza={handleClosePizza}
 					/>
