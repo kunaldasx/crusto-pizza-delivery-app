@@ -1,6 +1,6 @@
 <h1 align="center" style>
   <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://raw.githubusercontent.com/kunaldas01/crusto-pizza-delivery-app/refs/heads/main/client/src/assets/widgets/logo.svg" alt="Markdownify" width="200"></a>
+  <a href="https://crusto.onrender.com"><img src="https://raw.githubusercontent.com/kunaldas01/crusto-pizza-delivery-app/refs/heads/main/client/src/assets/widgets/logo.svg" alt="crusto" width="200"></a>
   <br>
   Crusto
   <br>
@@ -85,7 +85,7 @@ $ npm run dev
 ##### Backend setup (Terminal 2)
 
 ```bash
-$ cd backend
+$ cd server
 $ npm install
 $ cp .env.example .env  # Configure variables
 $ npm run dev
@@ -111,7 +111,7 @@ $ npm run dev:availability # Stock management
 
 ## Emailware
 
-Markdownify is an [emailware](https://en.wiktionary.org/wiki/emailware). Meaning, if you liked using this app or it has helped you in any way, I'd like you send me an email at <kunaldas.inc@gmail.com> about anything you'd want to say about this software. I'd really appreciate it!
+Crusto is an [emailware](https://en.wiktionary.org/wiki/emailware). Meaning, if you liked using this app or it has helped you in any way, I'd like you send me an email at <kunaldas.inc@gmail.com> about anything you'd want to say about this software. I'd really appreciate it!
 
 ## Technologies
 
@@ -129,7 +129,7 @@ This software uses the following technologies:
 
 If you like this project and think it has helped in any way, consider buying me a coffee!
 
-<a href="https://buymeacoffee.com/amitmerchant" target="_blank"><img src="app/img/bmc-button.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+<a href="" target="_blank"><img src="client/src/assets/images/bmc-button.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
 ## License
 
