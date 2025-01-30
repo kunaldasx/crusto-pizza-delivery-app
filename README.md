@@ -1,6 +1,6 @@
 <h1 align="center" style>
   <br>
-  <a href="https://crusto.onrender.com"><img src="https://raw.githubusercontent.com/kunaldas01/crusto-pizza-delivery-app/refs/heads/main/client/src/assets/widgets/logo.svg" alt="crusto" width="200"></a>
+  <a href="https://crusto.onrender.com" target="_blank"><img src="https://raw.githubusercontent.com/kunaldas01/crusto-pizza-delivery-app/refs/heads/main/client/src/assets/widgets/logo.svg" alt="crusto" width="200"></a>
   <br>
   Crusto
   <br>
@@ -9,16 +9,16 @@
 <h4 align="center">A pizza delivery platform that lets you create custom pizzas.</h4>
 
 <p align="center">
-  <a href="">
+  <a href="" target="_blank">
       <img src="https://img.shields.io/badge/MERN-Stack-brightgreen?logo=react">
   </a>
-  <a href="https://choosealicense.com/licenses/apache">
+  <a href="https://choosealicense.com/licenses/apache" target="_blank">
       <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg">
   </a>
-  <a href="">
+  <a href="" target="_blank">
       <img src="https://img.shields.io/badge/SayThanks.io-%E2%98%BC-1EAEDB.svg">
   </a>
-  <a href="">
+  <a href="" target="_blank">
     <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
   </a>
 </p>
