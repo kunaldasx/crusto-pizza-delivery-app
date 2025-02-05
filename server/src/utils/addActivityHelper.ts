@@ -1,4 +1,4 @@
-import { Activity } from "../models/activity.model";
+import { Activity } from "../models/activity.model.js";
 
 export const addActivityHelper = async (activity: any) => {
 	// Create the new activity
