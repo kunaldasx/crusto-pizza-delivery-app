@@ -1,6 +1,6 @@
 <h1 align="center" style>
   <br>
-  <a href="https://crusto.onrender.com" target="_blank"><img src="https://raw.githubusercontent.com/kunaldas01/crusto-pizza-delivery-app/refs/heads/main/client/src/assets/widgets/logo.svg" alt="crusto" width="200"></a>
+  <a href="https://crusto-pizza.vercel.app" target="_blank"><img src="https://raw.githubusercontent.com/kunaldas01/crusto-pizza-delivery-app/refs/heads/main/client/src/assets/widgets/logo.svg" alt="crusto" width="200"></a>
   <br>
   Crusto
   <br>
@@ -64,6 +64,55 @@
 
 -   Mobile Responsive - Works on all devices
 
+## Project Structure
+
+```
+crusto-pizza-delivery-app/
+├── client/                     # React frontend application
+│   ├── public/                 # Static assets (favicon, etc.)
+│   ├── src/
+│   │   ├── components/         # Reusable UI components
+│   │   ├── hooks/              # Custom React hooks
+│   │   ├── layouts/            # Page layout components (Root, Auth, Dashboard)
+│   │   ├── lib/                # Utility functions and helpers
+│   │   ├── pages/              # Page components organized by domain
+│   │   │   ├── auth/           # Authentication pages
+│   │   │   ├── root/           # Customer-facing pages
+│   │   │   └── dashboard/      # Admin dashboard pages
+│   │   ├── routes/             # React Router configuration
+│   │   ├── store/              # Zustand state management stores
+│   │   ├── App.tsx             # Main app component
+│   │   ├── main.tsx            # React entry point
+│   │   └── global.css          # Global styles
+│   ├── .env.example            # Environment variables template
+│   ├── package.json            # Frontend dependencies and scripts
+│   ├── components.json         # Radix UI components configuration
+│   ├── vite.config.ts          # Vite build configuration
+│   └── tsconfig.json           # TypeScript configuration
+│
+├── server/                     # Node.js backend application
+│   ├── src/
+│   │   ├── config/             # Configuration files (DB, Redis, Cloudinary, Razorpay)
+│   │   ├── controllers/        # Route handlers and business logic
+│   │   ├── jobs/               # Background job system (BullMQ)
+│   │   │   ├── processors/     # Job processing logic
+│   │   │   ├── queues/         # Job queue definitions
+│   │   │   └── workers/        # Worker processes (price, availability)
+│   │   ├── middleware/         # Express middleware (auth, upload, etc.)
+│   │   ├── models/             # Mongoose schemas and models
+│   │   ├── nodemailer/         # Email configuration and templates
+│   │   ├── routes/             # API route definitions
+│   │   ├── types/              # TypeScript type definitions
+│   │   ├── utils/              # Helper functions and utilities
+│   │   └── server.ts           # Express server entry point
+│   ├── .env.example            # Environment variables template
+│   ├── package.json            # Backend dependencies and scripts
+│   └── tsconfig.json           # TypeScript configuration
+├── .gitignore                  # Git ignore rules
+├── LICENSE                     # Apache 2.0 license
+└── README.md                   # Project documentation
+```
+
 ## How To Use
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
@@ -119,14 +168,15 @@ Crusto is an [emailware](https://en.wiktionary.org/wiki/emailware). Meaning, if 
 
 This software uses the following technologies:
 
--   React.js
--   Typescript
--   TailwindCSS
--   Node.js
--   Express.js
--   MongoDB
--   Redis
--   BullMQ
+-   **Frontend**: React 19 + TypeScript + Vite + TailwindCSS + Radix UI
+-   **Backend**: Node.js + Express + TypeScript
+-   **Database**: MongoDB (Mongoose ODM)
+-   **State Management**: Zustand stores
+-   **Queue System**: Redis + BullMQ for background jobs
+-   **Authentication**: JWT + bcrypt
+-   **File Storage**: Cloudinary
+-   **Payments**: Razorpay
+-   **Email**: Nodemailer
 
 ## Support
 
