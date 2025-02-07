@@ -31,9 +31,9 @@
   <a href="#license">License</a>
 </p>
 
-![preview](client/src/assets/images/demo.gif)
+![preview](client/src/assets/images/crusto-demo-gif.gif)
 
-**Live Demo**🔗 [https://crusto.onrender.com/](https://crusto.onrender.com/)
+**Live Demo**🔗 [https://crusto-two.vercel.app](https://crusto-two.vercel.app/)
 
 **Admin Credentials**
 
