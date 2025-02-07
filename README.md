@@ -66,12 +66,12 @@
 
 ## How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
 ##### Clone this repository
 
 ```bash
-$ git clone https://github.com/kunaldas01/crusto-pizza-delivery-app
+$ git clone https://github.com/kunaldasx/crusto-pizza-delivery-app
 $ cd crusto-pizza-delivery-app
 ```
 
@@ -107,13 +107,13 @@ $ npm run dev:availability # Stock management
 
 ## How to Contribute
 
-1. Clone repo and create a new branch: `$ https://github.com/kunaldas01/crusto-pizza-delivery-app -b name_for_new_branch`.
+1. Clone repo and create a new branch: `$ https://github.com/kunaldasx/crusto-pizza-delivery-app -b name_for_new_branch`.
 2. Make changes and test
 3. Submit Pull Request with comprehensive description of changes
 
 ## Emailware
 
-Crusto is an [emailware](https://en.wiktionary.org/wiki/emailware). Meaning, if you liked using this app or it has helped you in any way, I'd like you send me an email at <kunaldas.inc@gmail.com> about anything you'd want to say about this software. I'd really appreciate it!
+Crusto is an [emailware](https://en.wiktionary.org/wiki/emailware). Meaning, if you liked using this app or it has helped you in any way, I'd like you send me an email at <kunaldasx@gmail.com> about anything you'd want to say about this software. I'd really appreciate it!
 
 ## Technologies
 
@@ -121,6 +121,7 @@ This software uses the following technologies:
 
 -   React.js
 -   Typescript
+-   TailwindCSS
 -   Node.js
 -   Express.js
 -   MongoDB
@@ -139,6 +140,7 @@ Apache 2.0
 
 ---
 
-> [kunaldas.com]() &nbsp;&middot;&nbsp;
-> GitHub [@kunaldas01]() &nbsp;&middot;&nbsp;
-> Twitter [@kunaldas]()
+> [kunaldasx.vercel.app](https://kunaldasx.vercel.app/) &nbsp;&middot;&nbsp;
+> GitHub: [@kunaldasx](https://github.com/kunaldasx) &nbsp;&middot;&nbsp;
+> LinkedIn: [@kunaldasx](https://www.linkedin.com/in/kunaldasx/) &nbsp;&middot;&nbsp;
+> Twitter / X: [@kunaldasx](https://x.com/Kunaldasx) &nbsp;&middot;&nbsp;
